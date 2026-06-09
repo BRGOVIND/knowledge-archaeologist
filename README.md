@@ -177,11 +177,3 @@ knowledge-archaeologist/
 - Read-only API scopes for all integrations
 
 ---
-
-## Built By
-
-**BR GOVIND** — 4th year CSE, Amrita Institute of Engineering
-
----
-
-*Built for the Slack Hackathon 2026*
