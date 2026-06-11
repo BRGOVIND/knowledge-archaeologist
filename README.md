@@ -175,5 +175,3 @@ knowledge-archaeologist/
 - Input validation and length caps
 - Secrets managed via environment variables
 - Read-only API scopes for all integrations
-
----
