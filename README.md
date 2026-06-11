@@ -1,109 +1,283 @@
-# 🔍 Knowledge Archaeologist
+# Knowledge Archaeologist
 
-> **AI-powered Slack agent that uncovers buried organizational knowledge across GitHub, Notion, and Slack — then explains it with sources and context.**
+**AI-powered organizational intelligence platform for Slack.**
 
-Built for the Slack Hackathon on DevPost.
+Knowledge Archaeologist helps teams uncover buried knowledge across GitHub, Notion, and Slack, reconstruct decisions, understand repositories, and safely execute actions through specialized AI agents.
 
----
-
-## The Problem
-
-Someone asks in Slack:
-> *"Why was the payment migration delayed?"*
-> *"Who approved the Kubernetes migration?"*
-> *"How does our deployment process work?"*
-
-The answer exists. But it's buried across Slack threads, GitHub PRs, and Notion docs. People waste hours searching.
-
-## The Solution
-
-Knowledge Archaeologist acts like an AI investigator. Ask it anything — it searches everything, synthesizes the answer, and shows you exactly where it found the information.
-
-```
-@Knowledge Archaeologist Why was the payment migration postponed?
-
-→ The Stripe webhook system failed load testing at 5,000 req/sec.
-
-   📦 GitHub: PR #12 "Payment Migration" — webhook failure noted
-   📄 Notion: "Q2 Infrastructure Projects" — marked as delayed  
-   💬 Slack: #backend discussion (May 12-14)
-
-   Decision owner: @sarah_eng
-   Next steps: Redesign webhook batching system
-   
-   Answered in 3.2s ⚡
-```
+Built for the Slack Agent Builder Challenge.
 
 ---
 
-## Demo
+## What It Does
 
-![Knowledge Archaeologist Demo](https://img.shields.io/badge/Status-Live-brightgreen)
+Knowledge Archaeologist understands:
 
-**Live demo:** Ask the bot anything in the Slack workspace.
+* GitHub repositories
+* Slack discussions
+* Notion documentation
+
+It builds:
+
+* Repository Intelligence
+* Decision Timelines
+* Evidence Chains
+* Organizational Knowledge Maps
+
+It creates:
+
+* Specialized AI Agents
+
+It performs:
+
+* Safe Human-Approved Actions
+
+---
+
+## Example 1 — Repository Archaeology
+
+A user pastes:
+
+https://github.com/pallets/flask
+
+Knowledge Archaeologist automatically:
+
+* Reads the repository
+* Analyzes README and structure
+* Identifies technologies
+* Finds key files
+* Explains architecture
+* Suggests a reading order
+* Stores the analysis for follow-up questions
+
+Example:
+
+```text
+Repository Archaeology — pallets/flask
+
+Summary:
+Flask is a lightweight WSGI web framework for Python.
+
+Tech Stack:
+Python · Werkzeug · Jinja · Pytest
+
+Key Files:
+src/flask/__init__.py
+tests/conftest.py
+docs/index.rst
+
+Suggested Reading Order:
+README.md
+→ docs/index.rst
+→ src/flask/__init__.py
+```
+
+---
+
+## Example 2 — Organizational Intelligence
+
+Ask:
+
+```text
+@Knowledge Archaeologist
+Why was the payment migration delayed?
+```
+
+Knowledge Archaeologist:
+
+* Searches GitHub
+* Searches Slack
+* Searches Notion
+* Correlates evidence
+* Reconstructs the decision
+
+Example:
+
+```text
+The migration was delayed because Stripe webhook load tests failed.
+
+Evidence:
+
+💬 Slack:
+#backend discussion
+May 12–14
+
+📦 GitHub:
+PR #84
+Webhook redesign
+
+📄 Notion:
+Q2 Infrastructure Plan
+
+Decision Owner:
+@sarah_eng
+```
+
+---
+
+## Example 3 — Specialized Agents
+
+Create agents from templates:
+
+* Repository Analyst
+* Documentation Fixer
+* Incident Investigator
+* Technical Writer
+* Knowledge Curator
+* Architecture Reviewer
+* Security Reviewer
+* Release Manager
+* Project Historian
+* Onboarding Assistant
+
+Or create agents using plain English:
+
+```text
+Create an agent that reviews onboarding docs
+and flags missing setup instructions.
+```
+
+---
+
+## Safe Approval Framework
+
+Agents never perform write actions automatically.
+
+Every write request follows:
+
+```text
+Agent
+↓
+Proposal
+↓
+Human Approval
+↓
+Execution
+↓
+Audit Log
+```
+
+This creates a transparent and enterprise-friendly workflow.
+
+---
+
+## Operations Center
+
+Knowledge Archaeologist includes a live Operations Center dashboard.
+
+Features:
+
+* Source Health
+* Agent Registry
+* Activity Feed
+* Repository Analyses
+* Approval Queue
+* Agent History
+* Live Execution Tracking
+
+Every significant action is recorded and visible in real time.
 
 ---
 
 ## Architecture
 
-```
-Slack Message (@Knowledge Archaeologist)
-              ↓
-        FastAPI Backend
-              ↓
-     MCP Servers (parallel)
-     ├── GitHub MCP     → PRs, Issues
-     ├── Notion MCP     → Pages, Docs  
-     └── Slack MCP      → Message History
-              ↓
-      Supabase Cache (TTL)
-              ↓
-    qwen3 / Gemini LLM
-    (Synthesize + Reason)
-              ↓
-    Slack Block Response
-    (Answer + Sources + Citations)
+```text
+Slack User
+      ↓
+Knowledge Archaeologist
+      ↓
+MCP Search Layer
+ ├─ GitHub
+ ├─ Slack
+ └─ Notion
+      ↓
+Groq LLM
+      ↓
+Evidence Synthesis
+      ↓
+Agent Framework
+      ↓
+Human Approval Gate
+      ↓
+Slack Response + Dashboard
 ```
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Agent Platform** | Slack Agent Builder |
-| **Backend** | FastAPI + Python |
-| **MCP Servers** | Custom (GitHub, Notion, Slack) |
-| **LLM** | qwen3:8b (local) / Gemini 2.0 Flash |
-| **Cache** | Supabase + In-memory TTL |
-| **Deployment** | Render |
+| Layer           | Technology                 |
+| --------------- | -------------------------- |
+| Agent Platform  | Slack Agent Builder        |
+| Backend         | FastAPI                    |
+| LLM             | Groq (Llama 3.1)           |
+| Integrations    | GitHub, Slack, Notion      |
+| Agent Framework | Custom                     |
+| Storage         | Supabase                   |
+| Dashboard       | Operations Center          |
+| Deployment      | Render / Cloudflare Tunnel |
 
 ---
 
-## Features
+## Core Features
 
-- **Multi-source search** — GitHub, Notion, and Slack searched simultaneously
-- **AI synthesis** — LLM reconstructs decisions with reasoning
-- **Source citations** — every answer shows exactly where it came from
-- **Caching** — repeated queries answer in <1 second (`⚡ cached`)
-- **Rate limiting** — protects against API abuse
-- **MCP architecture** — modular, extensible knowledge sources
-- **Live dashboard** — real-time query monitoring at `/`
+### Repository Archaeology
+
+Paste any public GitHub repository and receive:
+
+* Architecture Summary
+* Technology Stack
+* Key Files
+* Reading Order
+* Repository Intelligence
+
+### Incident Investigation
+
+Reconstruct incidents using:
+
+* Slack discussions
+* GitHub activity
+* Notion documentation
+
+### Evidence Chains
+
+Every answer includes evidence and source attribution.
+
+### Agent Platform
+
+Create specialized agents and safely execute actions.
+
+### Operations Center
+
+Real-time visibility into agents, approvals, analyses, and activity.
 
 ---
 
-## Judging Criteria Alignment
+## Current Status
 
-| Criterion | How We Address It |
-|-----------|------------------|
-| **Slack AI capabilities** | Full Slack Agent Builder integration with `app_mention` events |
-| **MCP integration** | Real MCP servers for GitHub, Notion, Slack — in the request path |
-| **Real-time search** | 3 sources searched in parallel on every query |
-| **Design** | Progressive UX — instant "Digging..." → edited answer |
-| **Impact** | Every company with Slack has this problem |
-| **Innovation** | Multi-source synthesis with citations, not just another chatbot |
+### Implemented
 
----
+* Repository Archaeology
+* Incident Investigator
+* Evidence Chains
+* Agent Templates
+* Natural Language Agent Creation
+* Safe Approval Framework
+* GitHub Integration
+* Slack Integration
+* Notion Integration
+* Operations Center Dashboard
+
+### In Progress
+
+* Notion Archaeology
+* Slack Decision Intelligence
+* Evidence Explorer
+* Decision Timeline
+* Enhanced Repository Intelligence
+
+```
+```
+
 
 ## Setup
 
